@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Request Tracker",
+  "version": "1.0",
+  "permissions": ["scripting", "webRequest"],
+  "host_permissions": ["*://*.rapidapi.com/*"],
+  "content_scripts": [{
+    "matches": ["*://*.rapidapi.com/*/api/*/playground/apiendpoint*"],
+    "run_at": "document_start",
+    "js": ["contentscript.js", "inject.js"]
+  }],
+  "web_accessible_resources": [{
+    "resources": ["injected.js"],
+    "matches": ["*://*.rapidapi.com/*"]
+  }]
+}
